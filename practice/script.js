@@ -15,4 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
   newSport.classList.add('sport');
 
   sports.appendChild(newSport);
+
+  const username = 'John Doe'
+  const welcomeMsg = document.getElementById("welcome-msg")
+
+  welcomeMsg.textContent += username === '' ? 'Guest' : username
 });
