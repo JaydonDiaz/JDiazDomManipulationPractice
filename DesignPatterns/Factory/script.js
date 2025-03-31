@@ -14,9 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
     this.create = (name, type) => {
       switch (type) {
         case 1: return new Developer(name)
-          break;
         case 2: return new Tester(name)
-          break;
+        default: throw new Error("Invalid employee type")
       }
     }
   }
