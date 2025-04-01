@@ -36,6 +36,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
   subject.subscribe(Observer1)
   subject.subscribe(Observer2)
-  subject.unsubscribe(Observer1)
   subject.fire()
 })
