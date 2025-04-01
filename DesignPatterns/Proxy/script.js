@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
         case "Bitcoin": return "$8,500"
         case "Litecoin": return "$50"
         case "Ethereum": return "$175"
+        default: return "Unknown Coin"
       }
     }
   }
