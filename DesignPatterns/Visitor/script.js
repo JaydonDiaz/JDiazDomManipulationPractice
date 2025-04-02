@@ -1,30 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   function Employee(name, salary) {
-    this.name = name
-    this.salary = salary
+    this.name = name;
+    this.salary = salary;
   }
 
   Employee.prototype = {
     getSalary: function () {
-      return this.salary
+      return this.salary;
     },
     setSalary: function (sal) {
-      this.salary = sal
+      this.salary = sal;
     },
-    accept: function (visitorFunction) {
-      visitorFunction(this)
+    accept: function (visitor) {
+      visitor.visit(this);
     }
+  };
+
+  // Define Visitor Object
+  function ExtraSalaryVisitor() {
+    this.visit = function (employee) {
+      employee.setSalary(employee.getSalary() * 2);
+      console.log(`${employee.name}'s salary doubled to: ${employee.getSalary()}`);
+    };
   }
 
-  const dev = new Employee("Bob", 10000)
-  console.log(dev.getSalary());
+  const dev = new Employee("Bob", 10000);
+  console.log(`${dev.name}'s original salary: ${dev.getSalary()}`);
 
-  function ExtraSalary(emp) {
-    emp.setSalary(emp.getSalary() * 2)
-  }
+  const salaryVisitor = new ExtraSalaryVisitor();
+  dev.accept(salaryVisitor);
 
-  dev.accept(ExtraSalary)
-  console.log(dev.getSalary());
-
-})
+});
